@@ -472,8 +472,20 @@
     <p>Spices | Grains &amp; Staples | Herbal Products</p>
     <p>Celebrating the flavours and traditions of Sri Lanka.</p>
     <p>&copy; 2026 ST Ceylon Products. All rights reserved.</p>
-  </footer>
-       document.querySelectorAll(".add-to-cart").forEach(button => {
+  </footer>  <section id="cart" style="padding:30px; text-align:center;">
+    <h2>My Shopping Cart</h2>
+    <div id="cart-items">
+      <p>Your cart is empty.</p>
+    </div>
+    <button id="whatsapp-order" type="button">
+      Request a Quote via WhatsApp
+    </button>
+  </section>
+
+  <script>
+    const cart = [];
+
+    document.querySelectorAll(".add-to-cart").forEach(button => {
       button.addEventListener("click", () => {
         const name = button.dataset.name;
         cart.push(name);
@@ -488,12 +500,15 @@
         return;
       }
 
-      const message = "Hello ST Ceylon Products,%0A%0AI would like a quotation for:%0A" +
-        cart.map(item => "- " + item).join("%0A");
+      const message = "Hello ST Ceylon Products,\n\nI would like a quotation for:\n" +
+        cart.map(item => "- " + item).join("\n");
 
-      window.open("https://wa.me/94703229530?text=" + message, "_blank");
+      window.open(
+        "https://wa.me/94726885050?text=" + encodeURIComponent(message),
+        "_blank"
+      );
     });
-  </script> 
+  </script>
 
 </body>
-        </html>
+</html>
